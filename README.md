@@ -1,2 +1,1 @@
-# Zepto Inventory and Supply Chain Analysis using SQL + Power BI
-# Working in Progress...
+# Zepto Inventory and Supply Chain Analysis using Power BI
