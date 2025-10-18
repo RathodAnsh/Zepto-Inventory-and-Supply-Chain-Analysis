@@ -1,0 +1,35 @@
+1st table: Data Warehouse:
+StoreID, StoreName, Location, Pincode, StoreCapacity
+
+2nd table: Delivery:
+DeliveryID, OrderID, DeliveryPartnerName, PickupTime, DeliveryEndTime, DistanceTraveled
+
+3rd table: Inventory:
+InventoryID, StoreID, ProductID, StockQuantity, ReorderLevel, LastUpdated
+
+4th table: Orders:
+OrderID, CustomerID, OrderDateTime, ProductID, Quantity, TotalAmount, StoreID, OrderStatus, ExpectedDeliveryTime, ActualDeliveryTime
+
+5th table: Products:
+ProductID, ProductName, Category, Brand, PricePerUnit, StockQuantity
+
+6th table: Returns:
+ReturnID, OrderID, ProductID, CustomerID, StoreID, ReturnReason, ReturnDate, RefundAmount, ReturnStatus
+
+--> Relationships <--
+
+DataWarehouse ↔ Orders : (1 Store → many Orders)
+
+DataWarehouse ↔ Inventory : (1 Store → many Inventory entries)
+
+DataWarehouse ↔ Returns : (1 Store → many Returns)
+
+Products ↔ Orders : (1 Product → many Orders)
+
+Products ↔ Inventory : (1 Product → many Inventory entries across warehouses)
+
+Products ↔ Returns : (1 Product → many Returns)
+
+Orders ↔ Delivery : (1 Order → 1 Delivery)
+
+Orders ↔ Returns : (1 Order → many Returns, but usually 0 or 1)
